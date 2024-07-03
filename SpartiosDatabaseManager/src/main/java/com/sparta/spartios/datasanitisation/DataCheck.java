@@ -1,18 +1,15 @@
 package com.sparta.spartios.datasanitisation;
 
-import com.sparta.spartios.logging.LoggerInitialiser;
-
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeFormatterBuilder;
 import java.time.format.DateTimeParseException;
 import java.time.temporal.ChronoField;
 import java.util.logging.Level;
-import java.util.logging.Logger;
+
+import static com.sparta.spartios.App.logger;
 
 public class DataCheck {
-    final static Logger logger = LoggerInitialiser.getLogger(Level.ALL, Level.FINE, false, false);
-
     public static boolean isValidId(String id){
 
         logger.log(Level.FINE, "Entered has Valid ID method");
