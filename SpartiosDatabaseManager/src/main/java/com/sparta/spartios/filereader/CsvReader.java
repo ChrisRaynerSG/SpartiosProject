@@ -12,6 +12,7 @@ public class CsvReader{
     final static Logger logger = LoggerInitialiser.getLogger(Level.ALL, Level.FINE, false, false);
 
     public static HashSet<String> getAllLines(){
+        //Maybe change hashset to ArrayList depending on how to access data for cleaning
         HashSet<String> lines = new HashSet<>();
         try(BufferedReader bufferedReader = new BufferedReader(new FileReader("src/main/resources/employees-corrupted(in).csv"))){
             logger.log(Level.FINE, "Init file read");
@@ -19,6 +20,7 @@ public class CsvReader{
             while((line = bufferedReader.readLine())!= null){
                 logger.log(Level.FINER, "Added line: " +line + "\nTo Hash Set");
                 lines.add(line);
+
             }
             return lines;
         }
