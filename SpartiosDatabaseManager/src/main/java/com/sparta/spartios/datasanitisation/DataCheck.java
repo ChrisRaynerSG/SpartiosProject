@@ -10,9 +10,9 @@ import java.time.temporal.ChronoField;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-public class DataCheck {
-    final static Logger logger = LoggerInitialiser.getLogger(Level.ALL, Level.FINE, false, false);
+import static com.sparta.spartios.App.logger;
 
+public class DataCheck {
     public static boolean isValidId(String id){
 
         logger.log(Level.FINE, "Entered has Valid ID method");

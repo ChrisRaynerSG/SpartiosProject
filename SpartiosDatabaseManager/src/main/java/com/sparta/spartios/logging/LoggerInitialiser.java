@@ -7,8 +7,9 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class LoggerInitialiser{
-    // Use this in the class you want:
+    // Use this in the main class:
     // final static Logger logger = LoggerInitialiser.getLogger(Level.ALL, false);
+    // When using logger.xxx in subsequent classes just import the static field
     // Console Level, File Level, Append to file?, Use simple format?
     // Simple format means it does not record the time and place of the error. The file always uses complex format
 

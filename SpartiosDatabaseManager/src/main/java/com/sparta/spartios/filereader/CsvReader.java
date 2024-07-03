@@ -8,9 +8,9 @@ import java.io.IOException;
 import java.util.HashSet;
 import java.util.logging.*;
 
-public class CsvReader{
-    final static Logger logger = LoggerInitialiser.getLogger(Level.ALL, Level.FINE, false, false);
+import static com.sparta.spartios.App.logger;
 
+public class CsvReader{
     public static HashSet<String> getAllLines(){
         //Maybe change hashset to ArrayList depending on how to access data for cleaning
         HashSet<String> lines = new HashSet<>();
