@@ -10,7 +10,8 @@ import static com.sparta.spartios.App2.loggerCheck;
 public class App {
     final static Logger logger = LoggerInitialiser.getLogger(Level.ALL, true);
     public static void main(String[] args) {
-        logger.info("test string");
+        logger.finest("test string");
         loggerCheck();
+        logger.finest("finest string");
     }
 }

@@ -25,12 +25,12 @@ public class LoggerInitialiser{
         }
     }
     public static Logger getLogger (Level consoleLevel, boolean isSimple){
-        setupConsoleHandler(consoleLevel, isSimple);
+        logger.addHandler(setupConsoleHandler(consoleLevel, isSimple));
         logger.setUseParentHandlers(false);
         logger.setLevel(Level.ALL);
         return logger;
     }
-    public static void setupConsoleHandler(Level level, boolean isSimple) {
+    private static ConsoleHandler setupConsoleHandler(Level level, boolean isSimple) {
         ConsoleHandler consoleHandler = new ConsoleHandler();
         if (isSimple){
             consoleHandler.setFormatter(new CustomFormatterReadable());
@@ -38,7 +38,7 @@ public class LoggerInitialiser{
             consoleHandler.setFormatter(new CustomFormatterTerminal());
         }
         consoleHandler.setLevel(level);
-        logger.addHandler(consoleHandler);
+        return consoleHandler;
 
     }
 
