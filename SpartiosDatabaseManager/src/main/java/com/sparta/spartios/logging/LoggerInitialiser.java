@@ -31,7 +31,6 @@ public class LoggerInitialiser{
         return logger;
     }
     public static void setupConsoleHandler(Level level, boolean isSimple) {
-
         ConsoleHandler consoleHandler = new ConsoleHandler();
         if (isSimple){
             consoleHandler.setFormatter(new CustomFormatterReadable());

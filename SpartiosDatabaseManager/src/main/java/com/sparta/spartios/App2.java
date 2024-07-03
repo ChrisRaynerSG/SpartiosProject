@@ -6,8 +6,8 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class App2 {
-    final static Logger logger = LoggerInitialiser.getLogger(Level.ALL, false);
-    public static void loggercheck(){
+    final static Logger logger = LoggerInitialiser.getLogger(Level.ALL, true);
+    public static void loggerCheck(){
         logger.info("Second test message");
     }
 }
