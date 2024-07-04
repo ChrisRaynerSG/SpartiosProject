@@ -9,7 +9,7 @@ import static com.sparta.spartios.App.logger;
 
 public class DBQuerier {
     private Connection connection = null;
-    private final String jdbcURL = "jdbc:mysql://localhost:3306";
+    private final String jdbcURL = "jdbc:mysql://localhost:3306/employee_db";
     private final String jdbcUserName = "root";
     private final String jdbcPassword = "root";
 

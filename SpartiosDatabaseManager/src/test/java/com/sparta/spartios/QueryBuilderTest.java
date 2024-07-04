@@ -18,9 +18,21 @@ public class QueryBuilderTest {
         Assertions.assertEquals("SELECT * FROM employees",query);
     }
     @Test
-    void returnExpectedSelectStatementWithWhere(){
+    void returnExpectedSelectStatementWithWhereIsEqualTo(){
         String query = get(EVERYTHING,from(EMPLOYEES,where(EMPLOYEE_ID,isEqualTo("178566"))));
         Assertions.assertEquals("SELECT * FROM employees WHERE emp_id = '178566'",query);
+    }
+
+    @Test
+    void returnExpectedSelectStatementWithWhereIsLessThan(){
+        String query = get(EVERYTHING,from(EMPLOYEES,where(SALARY,isLessThan("100000"))));
+        Assertions.assertEquals("SELECT * FROM employees WHERE salary < '100000'",query);
+    }
+
+    @Test
+    void returnExpectedSelectStatementWithWhereIsGreaterThan(){
+        String query = get(EVERYTHING,from(EMPLOYEES,where(SALARY,isGreaterThan("100000"))));
+        Assertions.assertEquals("SELECT * FROM employees WHERE salary > '100000'",query);
     }
 
     @Test
