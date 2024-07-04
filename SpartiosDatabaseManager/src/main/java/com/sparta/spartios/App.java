@@ -1,6 +1,7 @@
 package com.sparta.spartios;
 
 
+import com.sparta.spartios.Dao.EmployeeDAO;
 import com.sparta.spartios.dbmanagement.ConnectToDatabase;
 import com.sparta.spartios.dbmanagement.DatabaseInitialiser;
 import com.sparta.spartios.logging.LoggerInitialiser;
@@ -13,6 +14,7 @@ public class App {
     public static void main(String[] args) {
 
         DatabaseInitialiser.instantiateDatabase(ConnectToDatabase.employeeDatabaseConnection(), true);
-
+        EmployeeDAO employeeDAO = new EmployeeDAO();
+        employeeDAO.getEmployees();
     }
 }
