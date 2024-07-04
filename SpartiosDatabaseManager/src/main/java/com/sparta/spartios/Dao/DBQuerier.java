@@ -1,6 +1,9 @@
 package com.sparta.spartios.Dao;
 
+import com.sparta.spartios.dtos.Employee;
+
 import java.sql.*;
+import java.util.HashSet;
 
 import static com.sparta.spartios.App.logger;
 
@@ -32,23 +35,20 @@ public class DBQuerier {
         }
     }
 
-    public void queryDB(){
+    public HashSet<Employee> queryDB(){
         establishConnection();
         ResultSet resultOfQuery = null;
         try {
             Statement getStatement = connection.createStatement();
             String query = "SELECT * FROM employee_db.employees";
             resultOfQuery = getStatement.executeQuery(query);
-            logger.warning("" + resultOfQuery.next());
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        for(String s : DBParser.getResultsAsStrings(resultOfQuery)){
-            System.out.println(s);
-        }
+        HashSet<Employee> results = DBParser.getResultAsEmployees(resultOfQuery);
         closeConncetion();
 
-        //return resultOfQuery;
+        return results;
     }
 
 }

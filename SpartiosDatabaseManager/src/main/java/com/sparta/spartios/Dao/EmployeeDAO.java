@@ -12,7 +12,6 @@ public class EmployeeDAO implements DAO {
 
     @Override
     public HashSet<Employee> getEmployees() {
-        db.queryDB();
         return null;
     }
 
