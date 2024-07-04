@@ -1,14 +1,28 @@
 package com.sparta.spartios;
 
 import com.sparta.spartios.datasanitisation.DataCheck;
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.Disabled;
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
+import com.sparta.spartios.datasanitisation.DuplicateEmployeeIDPredicate;
+import com.sparta.spartios.dtos.Employee;
+import org.junit.jupiter.api.*;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.stream.Stream;
 
 public class DataCheckTests {
+
+    static ArrayList<Employee> employees = new ArrayList<>();
+
+    @BeforeAll
+    static void setUp() {
+        Employee employee = new Employee("123456", null, null, null, null, null, null, null, null, "123456");
+        Employee employee2 = new Employee("123456", null, null, null, null, null, null, null, null, "654321");
+        Employee employee3 = new Employee("123455", null, null, null, null, null, null, null, null, "654321");
+        employees.add(employee);
+        employees.add(employee2);
+        employees.add(employee3);
+
+    }
 
     @Test
     @DisplayName("Given prefix of Dr. return true")
@@ -69,5 +83,22 @@ public class DataCheckTests {
         boolean expected = true;
         boolean actual = DataCheck.isValidLastName(input);
         Assertions.assertEquals(expected, actual);
+    }
+
+    @Test
+    void givenTwoEmployeesWithIdenticalIDReturnFalse(){
+        boolean expected =false;
+        DuplicateEmployeeIDPredicate predicate = new DuplicateEmployeeIDPredicate();
+        predicate.test(employees.get(0));
+        boolean actual = predicate.test(employees.get(1));
+        Assertions.assertEquals(expected,actual);
+    }
+    @Test
+    void givenTwoEmployeesWithDifferentIDReturnTrue(){
+        boolean expected =true;
+        DuplicateEmployeeIDPredicate predicate = new DuplicateEmployeeIDPredicate();
+        predicate.test(employees.get(0));
+        boolean actual = predicate.test(employees.get(2));
+        Assertions.assertEquals(expected,actual);
     }
 }
