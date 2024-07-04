@@ -3,8 +3,7 @@ package com.sparta.spartios;
 public interface DatabaseCreationStatements {
 
     String createDatabase = "CREATE DATABASE employee_data";
-    String createTable = "DROP TABLE IF EXISTS employees; "+
-                        "CREATE TABLE employees("+
+    String createTable = "CREATE TABLE IF NOT EXISTS employees("+
                         "Emp_ID INT(6) PRIMARY KEY,"+
 	                    "Name_Prefix VARCHAR(7),"+
                         "First_Name VARCHAR(30),"+

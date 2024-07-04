@@ -14,7 +14,6 @@ class ConnectToDatabase {
        return connectionToDB(properties);
    } catch (IOException e) {
        logger.warning("Failed to connect to database: "+e);
-
    }
 
    return null;
@@ -36,19 +35,34 @@ class ConnectToDatabase {
           return connection;
       } catch (SQLException e) {
           logger.warning("Failed to connect to database: "+e+"\n Trying to connect to local machine");
-          try {
-              Connection connection = DriverManager.getConnection(
-                      "jdbc:mysql://localhost:3306/",
-                      properties.getProperty("username"),
-                      properties.getProperty("password"));
-              logger.info("Successfully connected to local machine");
+          Connection connection = createDB(properties);
+          if (connection != null){
               return connection;
-          } catch (SQLException ex) {
-              logger.warning("Failed to connect to local machine: "+e);
           }
+
       }
         return null;
+
   }
+    private static Connection createDB(Properties properties){
+        try {
+            Connection connection = DriverManager.getConnection(
+                    "jdbc:mysql://localhost:3306/",
+                    properties.getProperty("username"),
+                    properties.getProperty("password"));
+            logger.info("Successfully connected to local machine");
+            try (Statement statement = connection.createStatement();){
+                statement.execute(DatabaseCreationStatements.createDatabase);
+                logger.info("Database created");
+            } catch (SQLException ex) {
+                logger.warning("Database failed to instantiate: "+ex);
+            }
+            return connection;
+        } catch (SQLException ex) {
+            logger.warning("Failed to connect to local machine: "+ex);
+        }
+        return null;
+    }
 
 
 

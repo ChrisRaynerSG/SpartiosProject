@@ -13,20 +13,14 @@ public class DatabaseInitialiser {
 
     public static void instantiateDatabase(Connection connection){
         HashSet<Employee> allEmployees = CsvReader.getAllLines();
-        createDatabase(connection);
+        createTable(connection);
         assert allEmployees != null;
         importEmployeeEntries(connection, allEmployees);
     }
 
 
-    private static void createDatabase(Connection connection)  {
+    private static void createTable(Connection connection)  {
 
-        try (Statement statement = connection.createStatement();){
-            statement.execute(DatabaseCreationStatements.createDatabase);
-            logger.info("Database created");
-        } catch (SQLException e) {
-            logger.warning("Database failed to instantiate: "+e);
-        }
         try (Statement statement = connection.createStatement();){
             statement.execute(DatabaseCreationStatements.createTable);
             logger.info("Database table created");
