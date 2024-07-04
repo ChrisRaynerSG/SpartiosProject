@@ -26,7 +26,7 @@ public class DatabaseInitialiser {
 
         try (Statement statement = connection.createStatement();){
             logger.info("Attempting to create table");
-            statement.execute(DatabaseCreationStatements.createTable);
+            statement.execute(Queryable.CREATE_TABLE);
             logger.info("Database table created");
         } catch (SQLException e){
             logger.warning("Table failed to create: "+e);
@@ -36,7 +36,7 @@ public class DatabaseInitialiser {
     }
     private static void dropOldTable (Connection connection){
         try (Statement statement = connection.createStatement();){
-            statement.execute(DatabaseCreationStatements.dropTable);
+            statement.execute(Queryable.DROP_TABLE);
             logger.info("Old employee table dropped successfully");
         } catch (SQLException e){
             logger.warning("Table failed to drop: "+e);
@@ -45,7 +45,7 @@ public class DatabaseInitialiser {
 
     private static void importEmployeeEntries(Connection connection, HashSet<Employee> allEmployees) {
 
-        try (PreparedStatement databaseEntries = connection.prepareStatement(DatabaseCreationStatements.importData);) {
+        try (PreparedStatement databaseEntries = connection.prepareStatement(Queryable.CREATE_NEW_EMPLOYEE);) {
             logger.info("Attempting to populate table");
             for (Employee employee : allEmployees) {
                 databaseEntries.setString(1, employee.employeeID());

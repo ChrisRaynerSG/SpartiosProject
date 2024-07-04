@@ -1,5 +1,7 @@
 package com.sparta.spartios.dbmanagement;
 
+import com.mysql.cj.QueryAttributesBindings;
+
 import java.io.FileReader;
 import java.io.IOException;
 import java.sql.*;
@@ -46,7 +48,7 @@ public class ConnectToDatabase {
             Connection connection = connectToLocal(properties);
 
             try (Statement statement = connection.createStatement();){
-                statement.execute(DatabaseCreationStatements.createDatabase);
+                statement.execute(Queryable.CREATE_DATABASE);
                 logger.info("Database employee created at "+properties.getProperty("url"));
                 logger.info("Connecting to new database");
                 connection = DriverManager.getConnection(
