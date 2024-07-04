@@ -6,6 +6,7 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import static com.sparta.spartios.Dao.QueryBuilder.*;
+import static com.sparta.spartios.Dao.QueryOptions.*;
 
 import java.util.HashSet;
 
@@ -13,13 +14,25 @@ public class QueryBuilderTest {
 
     @Test
     void returnExpectedSelectStatement(){
-        String query = get("*",from("employees"));
+        String query = get(EVERYTHING,from(EMPLOYEES));
         Assertions.assertEquals("SELECT * FROM employees",query);
     }
     @Test
     void returnExpectedSelectStatementWithWhere(){
-        String query = get("*",from("employees",where("emp_id","178566")));
+        String query = get(EVERYTHING,from(EMPLOYEES,where(EMPLOYEE_ID,isEqualTo("178566"))));
         Assertions.assertEquals("SELECT * FROM employees WHERE emp_id = '178566'",query);
+    }
+
+    @Test
+    void returnExpectedSelectStatementWithWhereLike(){
+        String query = get(EVERYTHING,from(EMPLOYEES,where(LAST_NAME,isLike("oj"))));
+        Assertions.assertEquals("SELECT * FROM employees WHERE last_name LIKE '%oj%'",query);
+    }
+
+    @Test
+    void returnExpectedSelectStatementWithBetween(){
+        String query = get(EVERYTHING,from(EMPLOYEES,where(SALARY,isBetween("50000","100000"))));
+        Assertions.assertEquals("SELECT * FROM employees WHERE salary BETWEEN '50000' AND '100000'",query);
     }
 
 }

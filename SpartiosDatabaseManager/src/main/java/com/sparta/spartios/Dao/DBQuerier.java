@@ -13,8 +13,6 @@ public class DBQuerier {
     private final String jdbcUserName = "root";
     private final String jdbcPassword = "root";
 
-    private static final String[] EMPLOYEE_TABLE_HEADINGS = {"emp_id", "name_prefix", "first_name", "middle_initial", "last_name", "gender", "email", "date_of_birth", "date_of_joining", "salary"};
-
     public void establishConnection(){
         try {
             connection = DriverManager.getConnection(jdbcURL, jdbcUserName, jdbcPassword);

@@ -18,8 +18,28 @@ public class QueryBuilder {
         return "FROM "+ tableName;
     }
 
-    public static String where(String columnName, String equals){
-        return "WHERE "+ columnName + " = '" + equals + "'";
+    public static String isLike(String comparison){
+        return " LIKE '%" + comparison +"%'";
+    }
+
+    public static String where(String columnName, String comparison){
+        return "WHERE "+ columnName + comparison;
+    }
+
+    public static String isEqualTo(String equalTo){
+        return " = '" + equalTo + "'";
+    }
+
+    public static String isGreaterThan(String greaterThan){
+        return " > '" + greaterThan + "'";
+    }
+
+    public static String isLessThan(String lessThan){
+        return " < '" + lessThan + "'";
+    }
+
+    public static String isBetween(String moreThan,String lessThan){
+        return " BETWEEN '" + moreThan + "' AND '" + lessThan +"'";
     }
 
 }
