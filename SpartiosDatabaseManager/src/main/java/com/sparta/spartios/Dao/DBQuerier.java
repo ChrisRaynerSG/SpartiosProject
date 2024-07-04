@@ -1,5 +1,6 @@
 package com.sparta.spartios.Dao;
 
+import com.sparta.spartios.dbmanagement.ConnectToDatabase;
 import com.sparta.spartios.dtos.Employee;
 
 import java.sql.*;
@@ -9,18 +10,10 @@ import static com.sparta.spartios.App.logger;
 
 public class DBQuerier {
     private Connection connection = null;
-    private final String jdbcURL = "jdbc:mysql://localhost:3306/employee_db";
-    private final String jdbcUserName = "root";
-    private final String jdbcPassword = "root";
 
     public void establishConnection(){
-        try {
-            connection = DriverManager.getConnection(jdbcURL, jdbcUserName, jdbcPassword);
-            logger.info("Connected to database");
-        } catch (SQLException e) {
-            logger.warning("Failed to connect to database");
-            e.printStackTrace();
-        }
+        connection = ConnectToDatabase.employeeDatabaseConnection();
+        logger.info("Connected to database");
     }
 
     public void closeConncetion(){

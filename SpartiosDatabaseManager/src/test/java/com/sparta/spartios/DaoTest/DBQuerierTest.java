@@ -1,10 +1,7 @@
-package com.sparta.spartios;
+package com.sparta.spartios.DaoTest;
 
 import com.sparta.spartios.Dao.DBQuerier;
-import com.sparta.spartios.datasanitisation.DataCheck;
 import com.sparta.spartios.dtos.Employee;
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import java.util.HashSet;

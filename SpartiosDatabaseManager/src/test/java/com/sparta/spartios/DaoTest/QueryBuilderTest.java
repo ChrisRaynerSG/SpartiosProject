@@ -1,12 +1,10 @@
-package com.sparta.spartios;
+package com.sparta.spartios.DaoTest;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import static com.sparta.spartios.Dao.QueryBuilder.*;
 import static com.sparta.spartios.Dao.QueryOptions.*;
-
-import java.util.HashSet;
 
 public class QueryBuilderTest {
 
