@@ -50,6 +50,7 @@ public class ConnectToDatabase {
             try (Statement statement = connection.createStatement();){
                 statement.execute(Queryable.CREATE_DATABASE);
                 logger.info("Database employee created at "+properties.getProperty("url"));
+                connection.close();
                 logger.info("Connecting to new database");
                 connection = DriverManager.getConnection(
                         properties.getProperty("url"),

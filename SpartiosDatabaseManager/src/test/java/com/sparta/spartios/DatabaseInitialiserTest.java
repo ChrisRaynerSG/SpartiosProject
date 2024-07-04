@@ -12,7 +12,7 @@ public class DatabaseInitialiserTest {
     public static void main(String[] args) {
         Connection connection = ConnectToDatabase.employeeDatabaseConnection();
 
-        DatabaseInitialiser.instantiateDatabase(connection,true);
+        DatabaseInitialiser.instantiateDatabase(connection,false);
     }
 
 
