@@ -1,4 +1,4 @@
-package com.sparta.spartios;
+package com.sparta.spartios.dbmanagement;
 
 import java.io.FileReader;
 import java.io.IOException;
@@ -7,7 +7,7 @@ import java.util.Properties;
 
 import static com.sparta.spartios.App.logger;
 
-class ConnectToDatabase {
+public class ConnectToDatabase {
   public static Connection employeeDatabaseConnection(){
    try {
     Properties properties = openProperties();

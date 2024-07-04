@@ -1,9 +1,7 @@
 package com.sparta.spartios;
 
-import com.sparta.spartios.datasanitisation.DataCheck;
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
+import com.sparta.spartios.dbmanagement.ConnectToDatabase;
+import com.sparta.spartios.dbmanagement.DatabaseInitialiser;
 
 import java.sql.Connection;
 

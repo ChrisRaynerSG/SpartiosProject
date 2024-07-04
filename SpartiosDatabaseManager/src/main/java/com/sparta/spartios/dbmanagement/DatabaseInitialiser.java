@@ -1,4 +1,4 @@
-package com.sparta.spartios;
+package com.sparta.spartios.dbmanagement;
 
 import com.sparta.spartios.dtos.Employee;
 import com.sparta.spartios.filereader.CsvReader;

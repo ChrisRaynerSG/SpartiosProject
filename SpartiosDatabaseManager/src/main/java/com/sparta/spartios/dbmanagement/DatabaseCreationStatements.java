@@ -1,4 +1,4 @@
-package com.sparta.spartios;
+package com.sparta.spartios.dbmanagement;
 
 public interface DatabaseCreationStatements {
 
