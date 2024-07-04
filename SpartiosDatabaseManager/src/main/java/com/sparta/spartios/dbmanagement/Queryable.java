@@ -24,8 +24,8 @@ public interface Queryable {
             "Last_Name VARCHAR(30),"+
             "Gender CHAR(1),"+
             "E_Mail VARCHAR(100),"+
-            "DOB VARCHAR(10),"+
-            "DOJ VARCHAR(10),"+
+            "DOB DATE,"+
+            "DOJ DATE,"+
             "Salary INT"+
             ")";
     String DROP_TABLE = "DROP TABLE IF EXISTS employees";
