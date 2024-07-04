@@ -189,6 +189,11 @@ public class DataCheck {
                 numberOfCorruptions++;
                 return false;
             }
+            else if(dateJoinDate.isBefore(LocalDate.of(1995,1,1))){
+                logger.log(Level.FINER, "Date of joining is before company founded");
+                numberOfCorruptions++;
+                return false;
+            }
             logger.log(Level.FINER, "Date of Joining is valid");
             return true;
         }
