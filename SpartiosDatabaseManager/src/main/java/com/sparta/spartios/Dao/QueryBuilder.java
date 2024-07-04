@@ -42,4 +42,13 @@ public class QueryBuilder {
         return " BETWEEN '" + moreThan + "' AND '" + lessThan +"'";
     }
 
+    public static String deleteFrom(String tableName, String whereStatement){
+        return "DELETE FROM " + tableName + " " + whereStatement;
+    }
+
+    public static String deleteFrom(String tableName){
+        return "DELETE FROM " + tableName;
+    }
+
+
 }
