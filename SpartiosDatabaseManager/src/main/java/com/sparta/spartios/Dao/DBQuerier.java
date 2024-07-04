@@ -1,17 +1,14 @@
 package com.sparta.spartios.Dao;
 
-import com.sparta.spartios.Loggable;
-import com.sparta.spartios.logging.LoggerInitialiser;
-
 import java.sql.*;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
-public class DBQuerier implements Loggable {
+import static com.sparta.spartios.App.logger;
+
+public class DBQuerier {
     private Connection connection = null;
-    private final String jdbcURL = "";
-    private final String jdbcUserName = "";
-    private final String jdbcPassword = "";
+    private final String jdbcURL = "jdbc:mysql://localhost:3306";
+    private final String jdbcUserName = "root";
+    private final String jdbcPassword = "root";
 
     private static final String[] EMPLOYEE_TABLE_HEADINGS = {"emp_id", "name_prefix", "first_name", "middle_initial", "last_name", "gender", "email", "date_of_birth", "date_of_joining", "salary"};
 
@@ -42,10 +39,10 @@ public class DBQuerier implements Loggable {
             Statement getStatement = connection.createStatement();
             String query = "SELECT * FROM employee_db.employees";
             resultOfQuery = getStatement.executeQuery(query);
+            logger.warning("" + resultOfQuery.next());
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        closeConncetion();
         for(String s : DBParser.getResultsAsStrings(resultOfQuery)){
             System.out.println(s);
         }

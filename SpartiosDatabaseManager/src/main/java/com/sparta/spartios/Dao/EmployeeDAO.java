@@ -1,16 +1,12 @@
 package com.sparta.spartios.Dao;
 
 
-import com.sparta.spartios.Loggable;
 import com.sparta.spartios.dtos.Employee;
-import com.sparta.spartios.logging.LoggerInitialiser;
 
 import java.time.LocalDate;
 import java.util.HashSet;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
-public class EmployeeDAO implements DAO, Loggable {
+public class EmployeeDAO implements DAO {
 
     private static final DBQuerier db = new DBQuerier();
 

@@ -1,13 +1,13 @@
 package com.sparta.spartios.Dao;
 
-import com.sparta.spartios.Loggable;
-
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class DBParser implements Loggable {
+import static com.sparta.spartios.App.logger;
+
+public class DBParser {
 
     public static List<String> getResultsAsStrings(ResultSet result){
         logger.fine("Getting results from db as strings");
