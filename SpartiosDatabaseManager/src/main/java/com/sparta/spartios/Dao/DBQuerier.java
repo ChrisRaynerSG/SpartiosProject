@@ -35,12 +35,11 @@ public class DBQuerier {
         }
     }
 
-    public HashSet<Employee> queryDB(){
+    public HashSet<Employee> queryDB(String query){
         establishConnection();
         ResultSet resultOfQuery = null;
         try {
             Statement getStatement = connection.createStatement();
-            String query = "SELECT * FROM employee_db.employees";
             resultOfQuery = getStatement.executeQuery(query);
         } catch (SQLException e) {
             e.printStackTrace();

@@ -14,7 +14,7 @@ public class DBQuerierTest {
     @Test
     void testtest(){
         DBQuerier db = new DBQuerier();
-        HashSet<Employee> employeesFromDB = db.queryDB();
+        HashSet<Employee> employeesFromDB = db.queryDB("SELECT * FROM employees");
         System.out.println();
     }
 }
