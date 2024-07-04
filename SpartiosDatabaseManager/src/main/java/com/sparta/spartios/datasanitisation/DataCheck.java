@@ -226,4 +226,15 @@ public class DataCheck {
         numberOfCorruptions++;
     }
 
+    public static boolean isValidEmployee(Employee employee){
+        return(isValidId(employee.employeeID())
+                &&isValidFirstName(employee.firstName())
+                &&isValidMiddleInitial(employee.middleInitial())
+                &&isValidLastName(employee.lastName())
+                &&isValidGender(employee.gender())
+                &&isValidEmail(employee.email())
+                &&isValidDateOfBirth(employee.dateOfBirth())
+                &&isValidDateOfJoining(employee.dateOfJoining(), employee.dateOfBirth())
+                &&isValidSalary(employee.salary()));
+    }
 }

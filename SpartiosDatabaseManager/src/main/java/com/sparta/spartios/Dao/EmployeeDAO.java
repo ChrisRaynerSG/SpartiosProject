@@ -20,7 +20,14 @@ public class EmployeeDAO implements DAO {
 
     @Override
     public Employee getEmployee(String EmployeeID) {
-        return db.queryDB(get(EVERYTHING,from(EMPLOYEES,where(EMPLOYEE_ID,isEqualTo(EmployeeID))))).iterator().next();
+
+        if(db.queryDB(get(EVERYTHING,from(EMPLOYEES,where(EMPLOYEE_ID,isEqualTo(EmployeeID))))).iterator().next()!=null){
+            return db.queryDB(get(EVERYTHING,from(EMPLOYEES,where(EMPLOYEE_ID,isEqualTo(EmployeeID))))).iterator().next();
+        }
+        else{
+            System.out.println("No employee found with ID: " + EmployeeID);
+            return null;
+        }
     }
 
     @Override
