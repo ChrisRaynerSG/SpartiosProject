@@ -51,7 +51,7 @@ public class QueryBuilderTest {
 
     @Test
     void testUpdateRecordDateChange(){
-        String query = update(EMPLOYEES,changeTo(DATE_OF_BIRTH,"2000/03/07"),where(EMPLOYEE_ID,isEqualTo("115556")));
+        String query = update(EMPLOYEES,changeTo(DATE_OF_BIRTH,"2000-03-07"),where(EMPLOYEE_ID,isEqualTo("115556")));
         Assertions.assertEquals("UPDATE employees SET DOB = '2000-03-07' WHERE emp_id = '115556'",query);
     }
 }
