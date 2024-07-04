@@ -13,6 +13,7 @@ public class QueryBuilderTest {
         String query = get(EVERYTHING,from(EMPLOYEES));
         Assertions.assertEquals("SELECT * FROM employees",query);
     }
+
     @Test
     void returnExpectedSelectStatementWithWhereIsEqualTo(){
         String query = get(EVERYTHING,from(EMPLOYEES,where(EMPLOYEE_ID,isEqualTo("178566"))));
@@ -41,6 +42,18 @@ public class QueryBuilderTest {
     void returnExpectedSelectStatementWithBetween(){
         String query = get(EVERYTHING,from(EMPLOYEES,where(SALARY,isBetween("50000","100000"))));
         Assertions.assertEquals("SELECT * FROM employees WHERE salary BETWEEN '50000' AND '100000'",query);
+    }
+
+    @Test
+    void returnExpectedDeleteStatement(){
+        String query = deleteFrom(EMPLOYEES);
+        Assertions.assertEquals("DELETE FROM employees",query);
+    }
+
+    @Test
+    void returnExpectedDeleteStatementWithWhereIsEqualTo(){
+        String query = deleteFrom(EMPLOYEES,where(EMPLOYEE_ID,isEqualTo("178566")));
+        Assertions.assertEquals("DELETE FROM employees WHERE emp_id = '178566'",query);
     }
 
 }
