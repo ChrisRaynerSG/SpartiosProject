@@ -17,5 +17,5 @@ public interface DatabaseCreationStatements {
                         ")";
     String importData = "INSERT INTO employees (emp_id, name_prefix, first_name, middle_initial, last_name, gender, e_mail, DOB, DOJ, salary) VALUES"+
                         "(?,?,?,?,?,?,?,?,?,?)";
-
+    String dropTable = "DROP TABLE IF EXISTS employees";
 }
