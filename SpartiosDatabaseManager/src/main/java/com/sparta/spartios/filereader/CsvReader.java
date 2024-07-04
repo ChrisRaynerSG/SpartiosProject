@@ -1,34 +1,41 @@
 package com.sparta.spartios.filereader;
 
-import com.sparta.spartios.logging.LoggerInitialiser;
+import com.sparta.spartios.datasanitisation.DataCheck;
+import com.sparta.spartios.dtos.Employee;
+
 import java.io.BufferedReader;
-import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.HashSet;
 import java.util.logging.*;
+import java.util.stream.Collector;
+import java.util.stream.Collectors;
+
+import static com.sparta.spartios.App.logger;
 
 public class CsvReader{
-    final static Logger logger = LoggerInitialiser.getLogger(Level.ALL, Level.FINE, false, false);
+    public static HashSet<Employee> getAllLines(){
 
-    public static HashSet<String> getAllLines(){
-        //Maybe change hashset to ArrayList depending on how to access data for cleaning
-        HashSet<String> lines = new HashSet<>();
         try(BufferedReader bufferedReader = new BufferedReader(new FileReader("src/main/resources/employees-corrupted(in).csv"))){
-            logger.log(Level.FINE, "Init file read");
-            String line;
-            while((line = bufferedReader.readLine())!= null){
-                logger.log(Level.FINER, "Added line: " +line + "\nTo Hash Set");
-                lines.add(line);
 
-            }
-            return lines;
+             return bufferedReader.lines()
+                    .skip(1)
+                    .map(string -> string.split(","))
+                    .filter(strings -> DataCheck.isValidId(strings[0]))
+                     .filter(strings -> DataCheck.isValidFirstName(strings[2]))
+                     .filter(strings -> DataCheck.isValidMiddleInitial(strings[3]))
+                     .filter(strings -> DataCheck.isValidLastName(strings[4]))
+                     .filter(strings -> DataCheck.isValidGender(strings[5]))
+                     .filter(strings -> DataCheck.isValidEmail(strings[6]))
+                     .filter(strings -> DataCheck.isValidDateOfBirth(strings[7]))
+                     .filter(strings -> DataCheck.isValidDateOfJoining(strings[8],strings[7]))
+                     .filter(strings -> DataCheck.isValidSalary(strings[9]))
+                    .map(strings -> new Employee(strings[0],strings[1],strings[2],strings[3],strings[4],strings[5],strings[6],strings[7],strings[8],strings[9]))
+                    .collect(Collectors.toCollection(HashSet::new));
         }
         catch (IOException e){
             logger.log(Level.WARNING, "File to read not found");
-        }
-        finally {
-            return lines;
+            return null;
         }
     }
 }
