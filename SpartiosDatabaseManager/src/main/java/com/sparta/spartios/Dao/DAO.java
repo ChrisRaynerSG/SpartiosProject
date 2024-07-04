@@ -4,7 +4,6 @@ import com.sparta.spartios.dtos.Employee;
 
 import java.time.LocalDate;
 import java.util.HashSet;
-import java.util.List;
 
 public interface DAO {
     HashSet<Employee> getEmployees();

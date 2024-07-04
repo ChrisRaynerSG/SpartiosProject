@@ -1,7 +1,5 @@
 package com.sparta.spartios;
 
-import com.sparta.spartios.Dao.DBQuerier;
-import com.sparta.spartios.dtos.Employee;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
