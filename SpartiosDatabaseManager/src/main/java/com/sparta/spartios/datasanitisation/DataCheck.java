@@ -1,5 +1,7 @@
 package com.sparta.spartios.datasanitisation;
 
+import com.sparta.spartios.dtos.Employee;
+
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeFormatterBuilder;
@@ -214,4 +216,9 @@ public class DataCheck {
     public static int getNumberOfCorruptions(){
         return numberOfCorruptions;
     }
+
+    public static void increaseNumberOfCorruptions(){
+        numberOfCorruptions++;
+    }
+
 }

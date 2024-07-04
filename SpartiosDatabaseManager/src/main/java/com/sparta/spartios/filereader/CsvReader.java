@@ -1,6 +1,7 @@
 package com.sparta.spartios.filereader;
 
 import com.sparta.spartios.datasanitisation.DataCheck;
+import com.sparta.spartios.datasanitisation.DuplicateEmployeeIDPredicate;
 import com.sparta.spartios.dtos.Employee;
 
 import java.io.BufferedReader;
@@ -31,6 +32,7 @@ public class CsvReader{
                      .filter(strings -> DataCheck.isValidDateOfJoining(strings[8],strings[7]))
                      .filter(strings -> DataCheck.isValidSalary(strings[9]))
                     .map(strings -> new Employee(strings[0],strings[1],strings[2],strings[3],strings[4],strings[5],strings[6],strings[7],strings[8],strings[9]))
+                     .filter(new DuplicateEmployeeIDPredicate())
                     .collect(Collectors.toCollection(HashSet::new));
         }
         catch (IOException e){
