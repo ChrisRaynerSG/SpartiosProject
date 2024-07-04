@@ -13,4 +13,6 @@ public interface Queryable {
     String UPDATE_RECORD = "UPDATE employees SET employeeID = ? , prefix = ? WHERE employeeID = '?' ";
     String DELETE_FROM_TABLE = "DELETE FROM employees WHERE employeeID = '?'";
     String CREATE_NEW_EMPLOYEE = "INSERT INTO employees VALUES('?','?','?','?','?','?','?','?','?','?')";
+
+
 }
