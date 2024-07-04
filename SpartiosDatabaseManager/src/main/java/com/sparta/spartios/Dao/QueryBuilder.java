@@ -42,10 +42,20 @@ public class QueryBuilder {
         return " BETWEEN '" + moreThan + "' AND '" + lessThan +"'";
     }
 
-    public static String update(String tableName,String setStatement,String whereStatement){//UPDATE employees SET Gender = 'F' WHERE Emp_id = 115556;
+    public static String update(String tableName,String setStatement,String whereStatement){
         return "UPDATE "+ tableName + " " + setStatement + " " + whereStatement;
+      
     }
     public static String changeTo(String columnName, String valueToChangeTo){
         return "SET "+columnName+" = '"+valueToChangeTo+"'";
+      
+    }
+
+    public static String deleteFrom(String tableName, String whereStatement){
+        return "DELETE FROM " + tableName + " " + whereStatement;
+    }
+
+    public static String deleteFrom(String tableName){
+        return "DELETE FROM " + tableName;
     }
 }
