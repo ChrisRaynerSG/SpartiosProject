@@ -8,8 +8,9 @@ import java.util.HashSet;
 
 public class DBQuerierTest {
 
+    //Had a difficult time actually writing tests so I mostly manually tested in here
     @Test
-    void testtest(){
+    void sampleTest(){
         DBQuerier db = new DBQuerier();
         HashSet<Employee> employeesFromDB = db.queryDB("SELECT * FROM employees");
         System.out.println();

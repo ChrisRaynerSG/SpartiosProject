@@ -9,6 +9,7 @@ import java.time.LocalDate;
 import java.util.HashSet;
 import java.util.logging.Level;
 import java.util.stream.Collectors;
+import java.util.Iterator;
 
 import static com.sparta.spartios.App.logger;
 import static com.sparta.spartios.Dao.QueryBuilder.*;
@@ -31,6 +32,13 @@ public class EmployeeDAO implements DAO {
         }
         else{
             System.out.println("No employee found with ID: " + EmployeeID);
+            return null;
+        }
+
+        Iterator<Employee> employeeFound = db.queryDB(get(EVERYTHING,from(EMPLOYEES,where(EMPLOYEE_ID,isEqualTo(EmployeeID))))).iterator();
+        if(employeeFound.hasNext()){
+            return employeeFound.next();
+        }else {
             return null;
         }
     }
