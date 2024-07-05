@@ -41,4 +41,15 @@ public class DBQuerier {
         return results;
     }
 
+    public void deleteFromDB(String deleteStatement){
+        establishConnection();
+        try {
+            Statement getStatement = connection.createStatement();
+            getStatement.executeUpdate(deleteStatement);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        closeConncetion();
+    }
+
 }

@@ -46,4 +46,14 @@ public class EmployeeDAO implements DAO {
         LocalDate bornAfter = LocalDate.now().minusYears(youngerThan);
         return db.queryDB(get(EVERYTHING,from(EMPLOYEES,where(DATE_OF_BIRTH,isBetween(bornAfter.toString(),bornBefore.toString())))));
     }
+
+    @Override
+    public void deleteEmployee(String EmployeeID) {
+        db.deleteFromDB(deleteFrom(EMPLOYEES,where(EMPLOYEE_ID,isEqualTo(EmployeeID))));
+    }
+
+    @Override
+    public void addEmployee(Employee EmployeeID) {
+    }
+
 }
