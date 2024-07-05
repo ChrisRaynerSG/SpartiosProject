@@ -1,5 +1,7 @@
 package com.sparta.spartios.Dao;
 
+import com.sparta.spartios.dtos.Employee;
+
 public class QueryBuilder {
 
     private static String get(String columnNames){
@@ -44,12 +46,15 @@ public class QueryBuilder {
 
     public static String update(String tableName,String setStatement,String whereStatement){
         return "UPDATE "+ tableName + " " + setStatement + " " + whereStatement;
-      
+    }
+
+  
+    public static String changeTo(String columnName, String valueToChangeTo){
+        return "SET "+columnName+" = '"+valueToChangeTo+"'";
     }
 
     public static String change(String columnName, String toStatement){
         return "SET " + columnName + " = " + toStatement;
-      
     }
 
     public static String to(String valueToChangeTo){
@@ -63,4 +68,11 @@ public class QueryBuilder {
     public static String deleteFrom(String tableName){
         return "DELETE FROM " + tableName;
     }
+
+    public static String insertInto(String tableName, Employee employee){
+        return "INSERT INTO " + tableName + " VALUES ('"+employee.employeeID()+"','"+employee.prefix()+"','"+employee.firstName()
+                +"','"+employee.middleInitial()+"','"+employee.lastName()+"','"+employee.gender()+"','"+employee.email()+"','"
+                + employee.dateOfBirth()+"','"+employee.dateOfJoining()+"','"+employee.salary()+"');";
+    }
 }
+
