@@ -5,6 +5,7 @@ import com.sparta.spartios.dtos.Employee;
 
 import java.time.LocalDate;
 import java.util.HashSet;
+import java.util.Iterator;
 
 import static com.sparta.spartios.Dao.QueryBuilder.*;
 import static com.sparta.spartios.Dao.QueryOptions.*;
@@ -20,7 +21,13 @@ public class EmployeeDAO implements DAO {
 
     @Override
     public Employee getEmployee(String EmployeeID) {
-        return db.queryDB(get(EVERYTHING,from(EMPLOYEES,where(EMPLOYEE_ID,isEqualTo(EmployeeID))))).iterator().next();
+        Iterator<Employee> employeeFound = db.queryDB(get(EVERYTHING,from(EMPLOYEES,where(EMPLOYEE_ID,isEqualTo(EmployeeID))))).iterator();
+        if(employeeFound.hasNext()){
+            return employeeFound.next();
+        }else {
+            return null;
+        }
+
     }
 
     @Override
