@@ -56,7 +56,7 @@ public class EmployeeDAO implements DAO {
     public void addEmployee(Employee EmployeeID) {
     }
     @Override
-    public void updateEmployee(String){
-        db.updateDb();
+    public void updateEmployee(String parameter, String changeTo, String employeeID){
+        db.updateDb(update(EMPLOYEES,change(parameter,to(changeTo)),where(EMPLOYEE_ID,isEqualTo(employeeID)));
     }
 }
