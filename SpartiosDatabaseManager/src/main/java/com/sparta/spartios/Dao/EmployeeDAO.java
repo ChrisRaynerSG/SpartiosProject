@@ -48,5 +48,8 @@ public class EmployeeDAO implements DAO {
     @Override
     public void addEmployee(Employee EmployeeID) {
     }
-
+    @Override
+    public void updateEmployee(String){
+        db.updateDb();
+    }
 }
