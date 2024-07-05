@@ -2,6 +2,7 @@ package com.sparta.spartios;
 
 import com.sparta.spartios.Dao.EmployeeDAO;
 
+import com.sparta.spartios.datasanitisation.DataCheck;
 import com.sparta.spartios.datasanitisation.InputValidation;
 
 import com.sparta.spartios.dtos.Employee;
@@ -39,20 +40,20 @@ public class App {
 
         //SEARCH BY ID
 
-        if(InputValidation.hasValidID(searchByID)){
-            logger.log(Level.INFO, accessEmployees.getEmployee(searchByID).toString()));
-        }
+//        if(InputValidation.hasValidID(searchByID)){
+//            logger.log(Level.INFO, accessEmployees.getEmployee(searchByID).toString()));
+//        }
 
         //SEARCH BY NAME
 
-        if(InputValidation.hasValidPartialName(searchByName)){
-            consoleOutput = accessEmployees.getEmployees(searchByName);
-            printResultsToConsole(consoleOutput);
-        }
-
-        else{
-            logger.log(Level.WARNING,invalidInput);
-        }
+//        if(InputValidation.hasValidPartialName(searchByName)){
+//            consoleOutput = accessEmployees.getEmployees(searchByName);
+//            printResultsToConsole(consoleOutput);
+//        }
+//
+//        else{
+//            logger.log(Level.WARNING,invalidInput);
+//        }
 
         //SEARCH BY AGE RANGE
 
@@ -65,7 +66,7 @@ public class App {
 //        }
 //
 //        else{
-//            System.out.println(invalidInput);
+//            logger.log(Level.WARNING, invalidInput);
 //        }
 
         //SEARCH BY DATE OF JOINING
@@ -78,7 +79,7 @@ public class App {
 //            printResultsToConsole(consoleOutput);
 //        }
 //        else{
-//            System.out.println(invalidInput);
+//            logger.log(Level.WARNING, invalidInput);
 //        }
 
 //        System.out.println(DataCheck.getNumberOfCorruptions());
@@ -86,16 +87,24 @@ public class App {
 //        DELETE EMPLOYEE FROM RECORD
 //        if(InputValidation.hasValidID(searchByID)){
 //            accessEmployees.deleteEmployee(searchByID);
+//            logger.log(Level.INFO, "Employee with ID: " + searchByID + " removed from the database.");
 //
 //        }
 
         //ADD NEW EMPLOYEE
 
-//        if(InputValidation.hasValidID(searchByID)){
+//        if(DataCheck.isValidEmployee(employeeToAdd)){
 //            accessEmployees.createEmployee(employeeToAdd);
 //            logger.log(Level.INFO, accessEmployees.getEmployee("554433").toString());
 //        }
+//        else{
+//            logger.log(Level.WARNING, invalidInput);
+//        }
 
+        //UPDATE EMPLOYEE
+
+
+        //DELETE EMPLOYEE
 
 
     }
