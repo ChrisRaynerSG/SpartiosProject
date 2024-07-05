@@ -90,10 +90,9 @@ public class App {
 //        }
 
         //ADD NEW EMPLOYEE
-        CreateNewEmployee createNewEmployee = new CreateNewEmployee();
-        createNewEmployee.createEmployee(employeeToAdd);
 
         if(InputValidation.hasValidID(searchByID)){
+            accessEmployees.createEmployee(employeeToAdd);
             System.out.println(accessEmployees.getEmployee("554433").toString());
         }
 
