@@ -46,8 +46,8 @@ public class QueryBuilder {
 
     public static String update(String tableName,String setStatement,String whereStatement){
         return "UPDATE "+ tableName + " " + setStatement + " " + whereStatement;
-
     }
+  
     public static String changeTo(String columnName, String valueToChangeTo){
         return "SET "+columnName+" = '"+valueToChangeTo+"'";
 
@@ -66,5 +66,5 @@ public class QueryBuilder {
                 +"','"+employee.middleInitial()+"','"+employee.lastName()+"','"+employee.gender()+"','"+employee.email()+"','"
                 + employee.dateOfBirth()+"','"+employee.dateOfJoining()+"','"+employee.salary()+"');";
     }
-
 }
+

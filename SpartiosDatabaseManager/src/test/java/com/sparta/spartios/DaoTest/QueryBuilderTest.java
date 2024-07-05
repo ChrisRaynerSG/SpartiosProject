@@ -13,6 +13,7 @@ public class QueryBuilderTest {
         String query = get(EVERYTHING,from(EMPLOYEES));
         Assertions.assertEquals("SELECT * FROM employees",query);
     }
+
     @Test
     void returnExpectedSelectStatementWithWhereIsEqualTo(){
         String query = get(EVERYTHING,from(EMPLOYEES,where(EMPLOYEE_ID,isEqualTo("178566"))));
@@ -43,4 +44,26 @@ public class QueryBuilderTest {
         Assertions.assertEquals("SELECT * FROM employees WHERE salary BETWEEN '50000' AND '100000'",query);
     }
 
+    @Test
+    void testUpdateRecordGenderChange(){
+        String query = update(EMPLOYEES,changeTo(GENDER,"M"),where(EMPLOYEE_ID,isEqualTo("115556")));
+        Assertions.assertEquals("UPDATE employees SET gender = 'M' WHERE emp_id = '115556'",query);
+    }
+
+    @Test
+    void testUpdateRecordDateChange(){
+        String query = update(EMPLOYEES,changeTo(DATE_OF_BIRTH,"2000-03-07"),where(EMPLOYEE_ID,isEqualTo("115556")));
+        Assertions.assertEquals("UPDATE employees SET DOB = '2000-03-07' WHERE emp_id = '115556'",query);
+    }
+  
+    @Test
+    void returnExpectedDeleteStatement(){
+        String query = deleteFrom(EMPLOYEES);
+        Assertions.assertEquals("DELETE FROM employees",query);
+    }
+    @Test
+    void returnExpectedDeleteStatementWithWhereIsEqualTo(){
+        String query = deleteFrom(EMPLOYEES,where(EMPLOYEE_ID,isEqualTo("178566")));
+        Assertions.assertEquals("DELETE FROM employees WHERE emp_id = '178566'",query);
+    }
 }
