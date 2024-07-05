@@ -1,20 +1,16 @@
 package com.sparta.spartios;
 
 import com.sparta.spartios.Dao.EmployeeDAO;
-
 import com.sparta.spartios.datasanitisation.DataCheck;
 import com.sparta.spartios.datasanitisation.InputValidation;
-
 import com.sparta.spartios.dbmanagement.ConnectToDatabase;
 import com.sparta.spartios.dbmanagement.DatabaseInitialiser;
 import com.sparta.spartios.dtos.Employee;
 import com.sparta.spartios.logging.LoggerInitialiser;
-
 import java.time.LocalDate;
 import java.util.HashSet;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-
 import static com.sparta.spartios.Dao.QueryOptions.SALARY;
 
 public class App {
@@ -36,7 +32,7 @@ public class App {
         Employee employeeToAdd = new Employee("554433","Dr.","Mantis","D","Toboggan","M","magnum.toboggan@reynolds.com","5/5/1980","1/1/2008","1234506656");
 
         final String invalidInput = "Invalid Input!";
-        DatabaseInitialiser.instantiateDatabase(ConnectToDatabase.employeeDatabaseConnection(),false);
+        //DatabaseInitialiser.instantiateDatabase(ConnectToDatabase.employeeDatabaseConnection(),false);
         //SEARCH ALL
 
 //        consoleOutput = accessEmployees.getEmployees();
@@ -44,9 +40,9 @@ public class App {
 
         //SEARCH BY ID
 
-        if(InputValidation.hasValidID(searchByID)){
-            logger.log(Level.INFO, accessEmployees.getEmployee(searchByID).toString());
-        }
+//        if(InputValidation.hasValidID(searchByID)){
+//            logger.log(Level.INFO, accessEmployees.getEmployee(searchByID).toString());
+//        }
 
         //SEARCH BY NAME
 
@@ -108,7 +104,7 @@ public class App {
         //UPDATE EMPLOYEE
 
 //        if(DataCheck.isValidId(searchByID)){
-//            accessEmployees.updateEmployee(SALARY,"4567800000",searchByID);
+//            accessEmployees.updateEmployee(SALARY,"456780",searchByID);
 //            logger.log(Level.INFO, "Employee with ID: " + searchByID + " Updated.");
 //        }
 //        else {
@@ -117,13 +113,13 @@ public class App {
 
         //DELETE EMPLOYEE
 
-//        if(DataCheck.isValidId(searchByID)){
-//            accessEmployees.deleteEmployee(searchByID);
-//            logger.log(Level.INFO, "Employee with ID: " + searchByID + " Updated.");
-//        }
-//        else {
-//            logger.log(Level.WARNING, invalidInput);
-//        }
+        if(DataCheck.isValidId(searchByID)){
+            accessEmployees.deleteEmployee(searchByID);
+            logger.log(Level.INFO, "Employee with ID: " + searchByID + " Updated.");
+        }
+        else {
+            logger.log(Level.WARNING, invalidInput);
+        }
 
     }
     private static void printResultsToConsole(HashSet<Employee> consoleOutput) {
