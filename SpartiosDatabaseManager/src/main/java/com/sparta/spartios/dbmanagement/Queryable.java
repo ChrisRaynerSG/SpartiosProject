@@ -16,7 +16,7 @@ public interface Queryable {
 
 
     String CREATE_DATABASE = "CREATE DATABASE employee_data";
-    String CREATE_TABLE = "CREATE TABLE IF NOT EXISTS employees("+
+    String CREATE_TABLE = "CREATE TABLE employees("+
             "Emp_ID INT(6) PRIMARY KEY,"+
             "Name_Prefix VARCHAR(7),"+
             "First_Name VARCHAR(30),"+

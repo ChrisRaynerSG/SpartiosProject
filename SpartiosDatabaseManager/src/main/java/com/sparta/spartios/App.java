@@ -5,6 +5,8 @@ import com.sparta.spartios.Dao.EmployeeDAO;
 import com.sparta.spartios.datasanitisation.DataCheck;
 import com.sparta.spartios.datasanitisation.InputValidation;
 
+import com.sparta.spartios.dbmanagement.ConnectToDatabase;
+import com.sparta.spartios.dbmanagement.DatabaseInitialiser;
 import com.sparta.spartios.dtos.Employee;
 import com.sparta.spartios.logging.LoggerInitialiser;
 
@@ -34,7 +36,7 @@ public class App {
         Employee employeeToAdd = new Employee("554433","Dr.","Mantis","D","Toboggan","M","magnum.toboggan@reynolds.com","5/5/1980","1/1/2008","1234506656");
 
         final String invalidInput = "Invalid Input!";
-
+        DatabaseInitialiser.instantiateDatabase(ConnectToDatabase.employeeDatabaseConnection(),false);
         //SEARCH ALL
 
 //        consoleOutput = accessEmployees.getEmployees();
@@ -42,9 +44,9 @@ public class App {
 
         //SEARCH BY ID
 
-//        if(InputValidation.hasValidID(searchByID)){
-//            logger.log(Level.INFO, accessEmployees.getEmployee(searchByID).toString()));
-//        }
+        if(InputValidation.hasValidID(searchByID)){
+            logger.log(Level.INFO, accessEmployees.getEmployee(searchByID).toString());
+        }
 
         //SEARCH BY NAME
 
@@ -126,7 +128,7 @@ public class App {
     }
     private static void printResultsToConsole(HashSet<Employee> consoleOutput) {
         for(Employee employee : consoleOutput){
-            logger.log(Level.INFO,employee.toString()+"\n");
+            logger.info(employee.toString()+"\n");
         }
     }
 }

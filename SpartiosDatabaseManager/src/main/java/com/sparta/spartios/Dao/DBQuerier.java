@@ -13,7 +13,6 @@ public class DBQuerier {
 
     public void establishConnection(){
         connection = ConnectToDatabase.employeeDatabaseConnection();
-        logger.info("Connected to database");
     }
 
     public void closeConncetion(){

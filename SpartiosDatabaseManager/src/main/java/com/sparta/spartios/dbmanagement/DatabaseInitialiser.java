@@ -1,5 +1,6 @@
 package com.sparta.spartios.dbmanagement;
 
+import com.sparta.spartios.datasanitisation.DataCheck;
 import com.sparta.spartios.dtos.Employee;
 import com.sparta.spartios.filereader.CsvReader;
 
@@ -62,6 +63,7 @@ public class DatabaseInitialiser {
             }
 
             logger.info("Database successfully populated with "+ allEmployees.size()+" entries");
+            logger.info("Number of corrupted entries: "+ DataCheck.getNumberOfCorruptions());
         } catch (java.sql.SQLIntegrityConstraintViolationException e){
             logger.warning("Database already populated. To reinitialise please DROP old table");
         } catch (SQLException e) {
