@@ -46,13 +46,13 @@ public class QueryBuilderTest {
 
     @Test
     void testUpdateRecordGenderChange(){
-        String query = update(EMPLOYEES,changeTo(GENDER,"M"),where(EMPLOYEE_ID,isEqualTo("115556")));
+        String query = update(EMPLOYEES,change(GENDER,to("M")),where(EMPLOYEE_ID,isEqualTo("115556")));
         Assertions.assertEquals("UPDATE employees SET gender = 'M' WHERE emp_id = '115556'",query);
     }
 
     @Test
     void testUpdateRecordDateChange(){
-        String query = update(EMPLOYEES,changeTo(DATE_OF_BIRTH,"2000-03-07"),where(EMPLOYEE_ID,isEqualTo("115556")));
+        String query = update(EMPLOYEES,change(DATE_OF_BIRTH,to("2000-03-07")),where(EMPLOYEE_ID,isEqualTo("115556")));
         Assertions.assertEquals("UPDATE employees SET DOB = '2000-03-07' WHERE emp_id = '115556'",query);
     }
   
