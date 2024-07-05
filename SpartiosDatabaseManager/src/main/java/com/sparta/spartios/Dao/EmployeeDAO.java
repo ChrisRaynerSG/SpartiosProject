@@ -32,6 +32,7 @@ public class EmployeeDAO implements DAO {
         if(employeeFound.hasNext()){
             return employeeFound.next();
         }else {
+            logger.info("No employee found");
             return null;
         }
     }

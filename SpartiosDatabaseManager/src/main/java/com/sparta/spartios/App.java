@@ -1,6 +1,5 @@
 package com.sparta.spartios;
 
-import com.sparta.spartios.Dao.CreateNewEmployee;
 import com.sparta.spartios.Dao.EmployeeDAO;
 
 import com.sparta.spartios.datasanitisation.InputValidation;
