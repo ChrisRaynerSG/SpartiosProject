@@ -13,6 +13,8 @@ import java.util.HashSet;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import static com.sparta.spartios.Dao.QueryOptions.SALARY;
+
 public class App {
     public final static Logger logger = LoggerInitialiser.getLogger(Level.INFO, true);
     public static void main(String[] args) {
@@ -103,9 +105,23 @@ public class App {
 
         //UPDATE EMPLOYEE
 
+//        if(DataCheck.isValidId(searchByID)){
+//            accessEmployees.updateEmployee(SALARY,"4567800000",searchByID);
+//            logger.log(Level.INFO, "Employee with ID: " + searchByID + " Updated.");
+//        }
+//        else {
+//            logger.log(Level.WARNING, invalidInput);
+//        }
 
         //DELETE EMPLOYEE
 
+//        if(DataCheck.isValidId(searchByID)){
+//            accessEmployees.deleteEmployee(searchByID);
+//            logger.log(Level.INFO, "Employee with ID: " + searchByID + " Updated.");
+//        }
+//        else {
+//            logger.log(Level.WARNING, invalidInput);
+//        }
 
     }
     private static void printResultsToConsole(HashSet<Employee> consoleOutput) {
