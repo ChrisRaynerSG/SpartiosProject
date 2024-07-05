@@ -30,9 +30,11 @@ public class DBQuerier {
         establishConnection();
         ResultSet resultOfQuery = null;
         try {
+            logger.info("Attempting to query database");
             Statement getStatement = connection.createStatement();
             resultOfQuery = getStatement.executeQuery(query);
         } catch (SQLException e) {
+            logger.warning("Failed to query the database");
             e.printStackTrace();
         }
         HashSet<Employee> results = DBParser.getResultAsEmployees(resultOfQuery);
@@ -44,9 +46,11 @@ public class DBQuerier {
     public void deleteFromDB(String deleteStatement){
         establishConnection();
         try {
+            logger.info("Attempting to delete from database");
             Statement getStatement = connection.createStatement();
             getStatement.executeUpdate(deleteStatement);
         } catch (SQLException e) {
+            logger.warning("Failed to delete from the database");
             e.printStackTrace();
         }
         closeConncetion();
