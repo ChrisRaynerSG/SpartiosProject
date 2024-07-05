@@ -12,6 +12,6 @@ public interface DAO {
     HashSet<Employee> getEmployees(LocalDate hiredAfter, LocalDate hiredBefore);
     HashSet<Employee> getEmployees(Integer olderThan, Integer youngerThan);
     void deleteEmployee(String EmployeeID);
-    void addEmployee(Employee EmployeeID);
+    void createEmployee(Employee EmployeeID);
     void updateEmployee(String parameter, String changeTo, String employeeID);
 }
