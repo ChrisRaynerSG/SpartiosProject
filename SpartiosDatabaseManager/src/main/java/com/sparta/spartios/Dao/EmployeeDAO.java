@@ -21,11 +21,14 @@ public class EmployeeDAO implements DAO {
 
     @Override
     public HashSet<Employee> getEmployees() {
+        logger.fine("In getEmployees");
         return db.queryDB(get(EVERYTHING, from(EMPLOYEES)));
     }
 
     @Override
     public Employee getEmployee(String EmployeeID) {
+
+        logger.fine("In getEmployee");
         Iterator<Employee> employeeFound = db.queryDB(get(EVERYTHING,from(EMPLOYEES,where(EMPLOYEE_ID,isEqualTo(EmployeeID))))).iterator();
         if(employeeFound.hasNext()){
             return employeeFound.next();
@@ -37,16 +40,19 @@ public class EmployeeDAO implements DAO {
 
     @Override
     public HashSet<Employee> getEmployees(String lastName) {
+        logger.fine("In getEmployees");
         return db.queryDB(get(EVERYTHING,from(EMPLOYEES,where(LAST_NAME,isLike(lastName)))));
     }
 
     @Override
     public HashSet<Employee> getEmployees(LocalDate joinedAfter, LocalDate joinedBefore) {
+        logger.fine("In getEmployees");
         return db.queryDB(get(EVERYTHING,from(EMPLOYEES,where(DATE_OF_JOINING,isBetween(joinedAfter.toString(),joinedBefore.toString())))));
     }
 
     @Override
     public HashSet<Employee> getEmployees(Integer olderThan, Integer youngerThan) {
+        logger.fine("In getEmployees");
         LocalDate bornBefore = LocalDate.now().minusYears(olderThan);
         LocalDate bornAfter = LocalDate.now().minusYears(youngerThan);
         return db.queryDB(get(EVERYTHING,from(EMPLOYEES,where(DATE_OF_BIRTH,isBetween(bornAfter.toString(),bornBefore.toString())))));
@@ -54,16 +60,16 @@ public class EmployeeDAO implements DAO {
 
     @Override
     public void deleteEmployee(String EmployeeID) {
+              logger.fine("In deleteEmployee");
         db.deleteFromDB(deleteFrom(EMPLOYEES,where(EMPLOYEE_ID,isEqualTo(EmployeeID))));
     }
+  
 
-    @Override
-    public void addEmployee(Employee EmployeeID) {
-    }
     @Override
     public void updateEmployee(String parameter, String changeTo, String employeeID){
         db.updateDb(update(EMPLOYEES,change(parameter,to(changeTo)),where(EMPLOYEE_ID,isEqualTo(employeeID)));
     }
+                    
     @Override
     public void createEmployee(Employee employee) {
         HashSet<Employee> currentEmployees = getEmployees();
