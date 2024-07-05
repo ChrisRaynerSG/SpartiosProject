@@ -1,6 +1,5 @@
 package com.sparta.spartios;
 
-import com.sparta.spartios.Dao.CreateNewEmployee;
 import com.sparta.spartios.Dao.EmployeeDAO;
 
 import com.sparta.spartios.datasanitisation.InputValidation;
@@ -40,9 +39,9 @@ public class App {
 
         //SEARCH BY ID
 
-//        if(InputValidation.hasValidID(searchByID)){
-//            System.out.println(accessEmployees.getEmployee(searchByID).toString());
-//        }
+        if(InputValidation.hasValidID(searchByID)){
+            logger.log(Level.INFO, accessEmployees.getEmployee(searchByID).toString()));
+        }
 
         //SEARCH BY NAME
 
@@ -52,55 +51,57 @@ public class App {
         }
 
         else{
-            System.out.println(invalidInput);
+            logger.log(Level.WARNING,invalidInput);
         }
 
         //SEARCH BY AGE RANGE
 
-        if(InputValidation.hasValidAgeRange(searchByAgeLower,searchByAgeUpper)){
-            consoleOutput = accessEmployees
-                    .getEmployees(Integer.parseInt(searchByAgeLower),
-                        Integer.parseInt(searchByAgeUpper));
-            printResultsToConsole(consoleOutput);
-
-        }
-
-        else{
-            System.out.println(invalidInput);
-        }
+//        if(InputValidation.hasValidAgeRange(searchByAgeLower,searchByAgeUpper)){
+//            consoleOutput = accessEmployees
+//                    .getEmployees(Integer.parseInt(searchByAgeLower),
+//                        Integer.parseInt(searchByAgeUpper));
+//            printResultsToConsole(consoleOutput);
+//
+//        }
+//
+//        else{
+//            System.out.println(invalidInput);
+//        }
 
         //SEARCH BY DATE OF JOINING
 
-        if(InputValidation.hasValidDates(joinDateLower, joinDateUpper)){
-            LocalDate date1 = LocalDate.parse(joinDateLower, InputValidation.formatInputDates());
-            LocalDate date2 = LocalDate.parse(joinDateUpper, InputValidation.formatInputDates());
-
-            consoleOutput = accessEmployees.getEmployees(date1,date2);
-            printResultsToConsole(consoleOutput);
-        }
-        else{
-            System.out.println(invalidInput);
-        }
+//        if(InputValidation.hasValidDates(joinDateLower, joinDateUpper)){
+//            LocalDate date1 = LocalDate.parse(joinDateLower, InputValidation.formatInputDates());
+//            LocalDate date2 = LocalDate.parse(joinDateUpper, InputValidation.formatInputDates());
+//
+//            consoleOutput = accessEmployees.getEmployees(date1,date2);
+//            printResultsToConsole(consoleOutput);
+//        }
+//        else{
+//            System.out.println(invalidInput);
+//        }
 
 //        System.out.println(DataCheck.getNumberOfCorruptions());
 
-        //DELETE EMPLOYEE FROM RECORD
+//        DELETE EMPLOYEE FROM RECORD
 //        if(InputValidation.hasValidID(searchByID)){
 //            accessEmployees.deleteEmployee(searchByID);
+//
 //        }
 
         //ADD NEW EMPLOYEE
 
-        if(InputValidation.hasValidID(searchByID)){
-            accessEmployees.createEmployee(employeeToAdd);
-            System.out.println(accessEmployees.getEmployee("554433").toString());
-        }
+//        if(InputValidation.hasValidID(searchByID)){
+//            accessEmployees.createEmployee(employeeToAdd);
+//            logger.log(Level.INFO, accessEmployees.getEmployee("554433").toString());
+//        }
+
+
 
     }
-
     private static void printResultsToConsole(HashSet<Employee> consoleOutput) {
         for(Employee employee : consoleOutput){
-            System.out.println(employee.toString()+"\n");
+            logger.log(Level.INFO,employee.toString()+"\n");
         }
     }
 }

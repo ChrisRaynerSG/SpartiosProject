@@ -67,7 +67,7 @@ public class EmployeeDAO implements DAO {
 
     @Override
     public void updateEmployee(String parameter, String changeTo, String employeeID){
-        db.updateDb(update(EMPLOYEES,change(parameter,to(changeTo)),where(EMPLOYEE_ID,isEqualTo(employeeID)));
+        db.updateDb(update(EMPLOYEES,change(parameter,to(changeTo)),where(EMPLOYEE_ID,isEqualTo(employeeID))));
     }
                     
     @Override
@@ -78,7 +78,7 @@ public class EmployeeDAO implements DAO {
             currentEmployees = currentEmployees.stream().filter(new DuplicateEmployeeIDPredicate()).collect(Collectors.toCollection(HashSet::new));
             if (currentEmployees.contains(employee)) {
                 logger.log(Level.INFO, "New Employee added to the database!");
-                db.queryDB(insertInto(EMPLOYEES, employee));
+                db.updateDb(insertInto(EMPLOYEES, employee));
             } else {
                 logger.log(Level.FINE, "Employee with duplicate ID! Aborting database addition.");
             }
