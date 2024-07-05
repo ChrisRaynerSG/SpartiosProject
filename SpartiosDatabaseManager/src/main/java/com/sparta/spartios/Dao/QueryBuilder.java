@@ -46,6 +46,7 @@ public class QueryBuilder {
         return "UPDATE "+ tableName + " " + setStatement + " " + whereStatement;
       
     }
+
     public static String change(String columnName, String toStatement){
         return "SET " + columnName + " = " + toStatement;
       

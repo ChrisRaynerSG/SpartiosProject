@@ -8,8 +8,9 @@ import java.util.HashSet;
 
 public class EmployeeDAOTest {
 
+    //Had a difficult time actually writing tests so I mostly manually tested in here
     @Test
-    void testtest(){
+    void sampleTest(){
         EmployeeDAO dao = new EmployeeDAO();
         System.out.println(dao.getEmployee("847634"));
 
