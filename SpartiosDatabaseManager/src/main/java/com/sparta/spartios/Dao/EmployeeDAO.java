@@ -7,9 +7,9 @@ import com.sparta.spartios.dtos.Employee;
 
 import java.time.LocalDate;
 import java.util.HashSet;
+import java.util.Iterator;
 import java.util.logging.Level;
 import java.util.stream.Collectors;
-import java.util.Iterator;
 
 import static com.sparta.spartios.App.logger;
 import static com.sparta.spartios.Dao.QueryBuilder.*;
@@ -27,6 +27,7 @@ public class EmployeeDAO implements DAO {
 
     @Override
     public Employee getEmployee(String EmployeeID) {
+
         logger.fine("In getEmployee");
         Iterator<Employee> employeeFound = db.queryDB(get(EVERYTHING,from(EMPLOYEES,where(EMPLOYEE_ID,isEqualTo(EmployeeID))))).iterator();
         if(employeeFound.hasNext()){
@@ -34,6 +35,7 @@ public class EmployeeDAO implements DAO {
         }else {
             return null;
         }
+
     }
 
     @Override
@@ -58,10 +60,16 @@ public class EmployeeDAO implements DAO {
 
     @Override
     public void deleteEmployee(String EmployeeID) {
-        logger.fine("In deleteEmployee");
+              logger.fine("In deleteEmployee");
         db.deleteFromDB(deleteFrom(EMPLOYEES,where(EMPLOYEE_ID,isEqualTo(EmployeeID))));
     }
   
+
+    @Override
+    public void updateEmployee(String parameter, String changeTo, String employeeID){
+        db.updateDb(update(EMPLOYEES,change(parameter,to(changeTo)),where(EMPLOYEE_ID,isEqualTo(employeeID)));
+    }
+                    
     @Override
     public void createEmployee(Employee employee) {
         HashSet<Employee> currentEmployees = getEmployees();

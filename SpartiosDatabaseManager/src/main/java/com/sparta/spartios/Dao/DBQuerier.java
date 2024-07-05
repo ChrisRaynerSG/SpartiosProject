@@ -50,10 +50,21 @@ public class DBQuerier {
             Statement getStatement = connection.createStatement();
             getStatement.executeUpdate(deleteStatement);
         } catch (SQLException e) {
+
             logger.warning("Failed to delete from the database");
             e.printStackTrace();
+
         }
         closeConncetion();
     }
-
+    public void updateDb(String updateStatement){
+        establishConnection();
+        try {
+            Statement getStatement = connection.createStatement();
+            getStatement.executeUpdate(updateStatement);
+            logger.info("Update successful");
+        } catch (SQLException e) {
+            logger.warning("Error with update: "+ e);
+        }
+    }
 }
